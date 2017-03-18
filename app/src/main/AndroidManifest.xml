@@ -4,20 +4,154 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logo"
+        android:icon="@mipmap/ic_launcher"
         android:label="WebLearn"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
-            android:label="WebLearn"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="WebLearn"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".lessons.BasicActivity"
+            android:label="Basic"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".lessons.GitBasicActivity"
+            android:label="Git Basic"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".lessons.FrontEndActivity"
+            android:label="Front End"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".lessons.BackEndActivity"
+            android:label="Back End"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".lessons.FrameworkActivity"
+            android:label="Framework"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".lessons.ImportantActivity"
+            android:label="Important"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".lessonActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".TestActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".TestLessons.TestBasicActivity"
+            android:label="Basic"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".TestLessons.TestGitBasicActivity"
+            android:label="Git Basic"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".TestLessons.TestFrontEndActivity"
+            android:label="Front End"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".TestLessons.TestBackEndActivity"
+            android:label="Back End"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".TestLessons.TestFrameworkActivity"
+            android:label="Framework"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".TestLessons.TestImportantActivity"
+            android:label="Important"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+
+        <activity android:name=".TestSeries.Basic.l1B"
+            android:label="Basic"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".TestSeries.Basic.l2B"
+            android:label="Basic"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".TestSeries.GitBasic.l1GB"
+            android:label="Git Basic"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".TestSeries.GitBasic.l2GB"
+            android:label="Git Basic"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".TestSeries.FrontEnd.l1FE"
+            android:label="Front End"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".TestSeries.FrontEnd.l2FE"
+            android:label="Front End"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".TestSeries.BackEnd.l1BE"
+            android:label="BackEnd"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".TestSeries.BackEnd.l2BE"
+            android:label="BackEnd"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".TestSeries.Framework.l1F"
+            android:label="Framework"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".TestSeries.Framework.l2F"
+            android:label="Framework"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".TestSeries.Important.l1I"
+            android:label="Important"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+        <activity android:name=".TestSeries.Important.l2I"
+            android:label="Important"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/itemMenu"
+            />
+
     </application>
 
 </manifest>

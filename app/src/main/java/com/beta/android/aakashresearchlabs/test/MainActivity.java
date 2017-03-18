@@ -1,5 +1,6 @@
 package com.beta.android.aakashresearchlabs.test;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -10,7 +11,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import com.beta.android.aakashresearchlabs.test.customAdapters.wordAdapter;
+import com.beta.android.aakashresearchlabs.test.customClasses.wordclass;
+import com.beta.android.aakashresearchlabs.test.lessons.BackEndActivity;
+import com.beta.android.aakashresearchlabs.test.lessons.BasicActivity;
+import com.beta.android.aakashresearchlabs.test.lessons.FrameworkActivity;
+import com.beta.android.aakashresearchlabs.test.lessons.FrontEndActivity;
+import com.beta.android.aakashresearchlabs.test.lessons.GitBasicActivity;
+import com.beta.android.aakashresearchlabs.test.lessons.ImportantActivity;
+
+import java.util.ArrayList;
+
+import static com.beta.android.aakashresearchlabs.test.R.layout.activity_main;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -18,10 +35,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -33,42 +49,41 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        {TextView tx = (TextView)findViewById(R.id.textView);
+        //set font for app name in menu
 
-            Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/alienleague.ttf");
+        TextView tx = (TextView)findViewById(R.id.heading_appname);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),"fonts/WOX-Striped_Triple.otf");
+        tx.setTypeface(custom_font);
 
-            tx.setTypeface(custom_font);}
-        {TextView tx = (TextView)findViewById(R.id.button3);
 
-            Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/alienleague.ttf");
+        //set menu list adapter
 
-            tx.setTypeface(custom_font);}
-        {TextView tx = (TextView)findViewById(R.id.button4);
+        final ArrayList<wordclass> list = new ArrayList<wordclass>();
 
-            Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/alienleague.ttf");
+        list.add(new wordclass(R.string.list1,R.color.list1,BasicActivity.class));
+        list.add(new wordclass(R.string.list2,R.color.list2,GitBasicActivity.class));
+        list.add(new wordclass(R.string.list3,R.color.list3,FrontEndActivity.class));
+        list.add(new wordclass(R.string.list4,R.color.list4,BackEndActivity.class));
+        list.add(new wordclass(R.string.list5,R.color.list5,FrameworkActivity.class));
+        list.add(new wordclass(R.string.list6,R.color.list6,ImportantActivity.class));
 
-            tx.setTypeface(custom_font);}
-        {TextView tx = (TextView)findViewById(R.id.button5);
+        wordAdapter adapter = new wordAdapter(this,list);
+        ListView section = (ListView) findViewById(R.id.menu_list);
+        section.setAdapter(adapter);
 
-            Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/alienleague.ttf");
 
-            tx.setTypeface(custom_font);}
-        {TextView tx = (TextView)findViewById(R.id.button6);
+        //opening new activity for every item on menu list
+        section.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
-            Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/alienleague.ttf");
+                wordclass w = list.get(position);
 
-            tx.setTypeface(custom_font);}
-        {TextView tx = (TextView)findViewById(R.id.button7);
-
-            Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/alienleague.ttf");
-
-            tx.setTypeface(custom_font);}
-        {TextView tx = (TextView)findViewById(R.id.button8);
-
-            Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/alienleague.ttf");
-
-            tx.setTypeface(custom_font);}
-
+                //starting different activities respective to the item clicked
+                Intent intent = new Intent(getApplicationContext(),w.getmCls());
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -110,17 +125,36 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        Intent intent;
+
+        if (id == R.id.test)
+        {
+            intent = new Intent(getApplicationContext(),TestActivity.class);
+            startActivity(intent);
+        }
+
+        else if (id == R.id.nav_camera) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        }
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        else if (id == R.id.nav_gallery) {
 
         }
+
+        else if (id == R.id.nav_slideshow) {
+
+        }
+
+        else if (id == R.id.nav_share) {
+
+            Intent share=new Intent(Intent.ACTION_SEND);
+            share.putExtra(Intent.EXTRA_TITLE,"Sharing my progress");
+            share.putExtra(Intent.EXTRA_SUBJECT,"Puns :p");
+            share.setType("text/plain");
+            share.putExtra(Intent.EXTRA_TEXT,"How do functions break up? They stop calling each other");
+            startActivity(share);
+        }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
